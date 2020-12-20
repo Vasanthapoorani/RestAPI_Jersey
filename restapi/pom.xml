@@ -75,7 +75,7 @@
         </dependency>
         <dependency>
 		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-moxy</artifactId><!-- For converting obj into JSON FORMAT(XML by default) -->
+		    <artifactId>jersey-media-moxy</artifactId><!-- For converting object into JSON FORMAT(XML by default) -->
 		    <version>2.31</version>
 		</dependency>
 		<dependency>  
