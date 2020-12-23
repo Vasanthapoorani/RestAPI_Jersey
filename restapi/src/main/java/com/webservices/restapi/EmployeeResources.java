@@ -11,16 +11,19 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import jakarta.ws.rs.core.MediaType;
 
-@Path("employees")
+@Path("jersey")
 public class EmployeeResources {
 	
 	EmployeeRepository repo=new EmployeeRepository();
+	
 
 	@GET //Retrieving the resource
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) //Denotes the return type of the obj
+	@Path("employees")
 	public List<Employee> getEmployees() //Returns Employee List object
 	{
 		System.out.println("getEmployee Method called..");
@@ -29,7 +32,7 @@ public class EmployeeResources {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) //From Server to Client
-	@Path("employee/{id}") //{}-Place holder of the value id
+	@Path("employees/{id}") //{}-Place holder of the value id
 	public Employee getEmployee(@PathParam("id") int id) //"id" will be assigned to id by PathParam
 	{
 		return repo.getEmployee(id);	
@@ -37,7 +40,7 @@ public class EmployeeResources {
 	
 	@POST //Creating a resource
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) //From Client to Server
-	@Path("employee")
+	@Path("employees")
 	public Employee createEmployee(Employee e1)
 	{
 		System.out.println(e1);
@@ -47,7 +50,7 @@ public class EmployeeResources {
 	
 	@PUT //Creating a resource
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) //From Client to Server
-	@Path("employee")
+	@Path("employees/{id}")
 	public Employee updateEmployee(Employee e1)
 	{
 		System.out.println(e1);
@@ -61,10 +64,14 @@ public class EmployeeResources {
 		}
 		return e1;
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@DELETE
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML}) //From Server to Client
-	@Path("employee/{id}") //{}-Place holder of the value id
+	@Path("employees/{id}") //{}-Place holder of the value id
 	public Employee deleteEmployee(@PathParam("id") int id) //"id" will be assigned to id by PathParam
 	{
 		
